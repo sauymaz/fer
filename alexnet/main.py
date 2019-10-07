@@ -16,15 +16,15 @@ if __name__ == "__main__":
 
     model.summary()
 
-    util = ModelUtils(epochs=120)
-    util.get_train_data(resize=(MODEL_SIZE))
-    # util.get_val_data(resize=(MODEL_SIZE))
+    # util = ModelUtils(epochs=120)
+    # util.get_train_data(resize=(MODEL_SIZE))
+    # # util.get_val_data(resize=(MODEL_SIZE))
 
-    util.train(model)
-    util.evaluate()
-    util.save()
-    util.confusion_matrix()
-    util.plot_loss_accuracy()
+    # util.train(model)
+    # util.evaluate()
+    # util.save()
+    # util.confusion_matrix()
+    # util.plot_loss_accuracy()
     
     time_elapsed = datetime.now() - start 
     print('Time elapsed (hh:mm:ss.ms) {}'.format(time_elapsed))

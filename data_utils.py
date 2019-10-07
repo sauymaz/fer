@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg 
 import itertools
 import random
-from albumentations import Compose, CLAHE, RandomCrop, ToFloat
+# from albumentations import Compose, CLAHE, RandomCrop, ToFloat
 random.seed(1000)
 np.random.seed(1000)
 _EPSILON = 1e-8
@@ -51,10 +51,10 @@ def load_image(in_image):
     # load image
     # img = Image.open(in_image)
     img = cv2.imread(in_image)
-    clahe = apply_clahe()
-    enhanced = clahe(**{'image': img})
+    # clahe = apply_clahe()
+    # enhanced = clahe(**{'image': img})
     # import pdb; pdb.set_trace()
-    return enhanced['image']
+    return im
 
 def resize_image(in_image, new_width, new_height, out_image=None,
                  resize_mode=Image.ANTIALIAS):
@@ -157,8 +157,15 @@ def store_model(model, path,filename):
 def get_labels(y_onehot):
     y = onehot_to_cat(y_onehot)
     labels = np.empty(len(y), dtype=object)
-    labels[y == 0 ] = "N"
-    labels[y == 1 ] = "P"
+    labels[y == 0 ] = "Anger"
+    labels[y == 1 ] = "Contempt"
+    labels[y == 2 ] = "Disgust"
+    labels[y == 3 ] = "Fear"
+    labels[y == 4 ] = "Happiness"
+    labels[y == 5 ] = "Neutral"
+    labels[y == 6 ] = "Sadness"
+    labels[y == 7 ] = "Surprise"
+
 
     return labels
 
